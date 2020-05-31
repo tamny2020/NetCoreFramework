@@ -1,0 +1,67 @@
+﻿{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/values/getName",
+      "DownstreamScheme": "http",
+      "ServiceName": "UserAPI",
+      "UseServiceDiscovery": true,
+      "UpstreamPathTemplate": "/UserAPI/getName",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "UserAPI",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/values/GetUser",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "33054"
+        }
+      ],
+      "UpstreamPathTemplate": "/UserAPI/GetUser",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "UserAPI",
+        "AllowedScopes": []
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/values/get",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "32534"
+        }
+      ],
+      "UpstreamPathTemplate": "/OrderAPI/get",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+
+    {
+      "DownstreamPathTemplate": "/connect/token",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "33065"
+        }
+      ],
+      "UpstreamPathTemplate": "/authen/token",
+      "UpstreamHttpMethod": [ "Post" ]
+    }
+
+  ],
+  "GlobalConfiguration": {
+    //"BaseUrl": "http://localhost:33083",
+    "ServiceDiscoveryProvider": {
+      "Host": "localhost",
+      "Port": 8500,
+      "ConfigurationKey": "Gateway" //存储在Consul上的Key
+    }
+  }
+}

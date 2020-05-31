@@ -1,0 +1,23 @@
+{
+  "Client": {
+    "Address": "http://127.0.0.1:8500",
+    "Datacenter": "",
+    "Token": "",
+    "WaitTime": 10
+  },
+  "ServiceRegistration": {
+    "Id": "UserAPI_33054",
+    "Name": "UserAPI",
+    "Tags": [],
+    "Port": 33054,
+    "Address": "http://localhost/",
+    "Checks": [
+      {
+        "DeregisterCriticalServiceAfter": 5,
+        "Interval": 10,
+        "Timeout": 5,
+        "HealthCheckUrl": "http://localhost:33054/api/values/Health"
+      }
+    ]
+  }
+}
